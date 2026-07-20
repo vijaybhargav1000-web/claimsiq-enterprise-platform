@@ -1,7 +1,7 @@
 import json
 import boto3
 
-from prompts import CLAIM_SUMMARY_PROMPT
+from prompts import CLAIM_ANALYSIS_PROMPT
 
 
 bedrock = boto3.client(
@@ -12,10 +12,10 @@ bedrock = boto3.client(
 MODEL_ID = "meta.llama3-70b-instruct-v1:0"
 
 
-def analyze_claim(claim):
+def analyze_claim(prompt):
 
-    prompt = CLAIM_SUMMARY_PROMPT.format(
-        claim=claim
+    prompt = CLAIM_ANALYSIS_PROMPT.format(
+        claim=prompt
     )
 
     body = {
